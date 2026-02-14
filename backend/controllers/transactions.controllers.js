@@ -1,5 +1,20 @@
 const {TransactionServices} = require('../services/transactions.service');
 
+const getTransactions = async (req,res) => {
+    try{
+        const {email} = req.body;
+        
+        if(!email) return res.status(400).json({success: false, message: 'Missing required fields'});
+
+        const transactions = await TransactionServices.getTransactions(email);
+
+        return res.status(200).json({success: true, message: 'Transactions fetched successfully', transactions});
+
+    }catch(err){
+        return res.status(500).json({success: false, message: 'An error occurred', error: error});
+    }
+}
+
 const createTransaction = async (req,res) => {
     try{
 
@@ -57,4 +72,4 @@ const deleteTransaction = async (req,res) => {
     }
 }
 
-module.exports = {createTransaction, updateTransaction, deleteTransaction};
+module.exports = {createTransaction, updateTransaction, deleteTransaction, getTransactions};
