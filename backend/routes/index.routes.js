@@ -1,4 +1,10 @@
+const express = require("express");
 const UserRouter = require("./users.routes");
 const TransactionRouter = require("./transactions.routes");
 
-module.exports = {UserRouter, TransactionRouter};
+const Router = express.Router();
+
+Router.use('/users', UserRouter);
+Router.use('/transactions', TransactionRouter);
+
+module.exports = Router;

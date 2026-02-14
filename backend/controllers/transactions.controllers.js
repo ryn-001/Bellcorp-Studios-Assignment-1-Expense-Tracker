@@ -1,4 +1,4 @@
-const {TransactionServices} = require('../services/transactions.service');
+const {TransactionServices} = require('../services/services.index');
 
 const getTransactions = async (req,res) => {
     try{

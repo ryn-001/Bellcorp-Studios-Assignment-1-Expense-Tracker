@@ -1,4 +1,4 @@
-const UserController = require('./users.controllers');
-const TransactionController = require('./transactions.controllers');
+const UserControllers = require('./users.controllers');
+const TransactionControllers = require('./transactions.controllers');
 
-module.exports = {UserController, TransactionController};
+module.exports = {UserControllers, TransactionControllers};

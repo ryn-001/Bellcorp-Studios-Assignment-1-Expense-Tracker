@@ -1,6 +1,6 @@
 const {UserServices} = require('../services/services.index');
 
-const createUser = async (req, res) => {
+const register = async (req, res) => {
     try{
         const {name, email, password, balance} = req.body;
         
@@ -14,7 +14,7 @@ const createUser = async (req, res) => {
         const user = await UserServices.createUser({name, email, password, balance});
         return res.status(201).json({success: true, message: 'User created successfully', data: user});
     }catch(error){
-        return res.status(500).json({success: false, message: 'An error occurred', error: error});
+        return res.status(500).json({success: false, message: 'An error occurred', message: error.message});
     }
 }
 
@@ -31,8 +31,8 @@ const getUser = async (req, res) => {
 
         return res.status(200).json({success: true, message: 'User retrieved successfully', data: user});
     }catch(error){
-        return res.status(500).json({success: false, message: 'An error occurred', error: error});
+        return res.status(500).json({success: false, message: 'An error occurred', error: error.message});
     }
 }
 
-module.exports = {createUser, getUser};
+module.exports = {register, getUser};
