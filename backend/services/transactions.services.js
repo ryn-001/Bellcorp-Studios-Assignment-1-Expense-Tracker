@@ -9,7 +9,7 @@ const updateTransaction = async (id, field,value) => {
 }
 
 const deleteTransaction = async (id) => {
-    return await Transaction.findByIdAndUpdate(id, {$set: {isDeleted: true}});
+    return await Transaction.findByIdAndDelete(id);
 }
 
 module.exports = {createTransaction, updateTransaction, deleteTransaction};
