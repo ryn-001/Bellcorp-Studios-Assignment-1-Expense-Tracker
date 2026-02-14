@@ -1,0 +1,15 @@
+const {Transaction} = require('../models/models.index');
+
+const createTransaction = async (transaction) => {
+    return await Transaction.create(transaction);
+}
+
+const updateTransaction = async (id, field,value) => {
+    return await Transaction.findByIdAndUpdate(id, { $set: {[field] : value}}, {new: true});
+}
+
+const deleteTransaction = async (id) => {
+    return await Transaction.findByIdAndUpdate(id, {$set: {isDeleted: true}});
+}
+
+module.exports = {createTransaction, updateTransaction, deleteTransaction};
